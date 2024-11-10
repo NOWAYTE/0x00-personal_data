@@ -7,11 +7,8 @@ import re
 
 def filter_datum(fields: list[str], redaction: str, message: str,
                  separator: str) -> str:
-    """Replaces values with specified fields"""
-    for i in fields:
-        pattern = re.sub(
-            rf"{i}=(.*?)(?={separator}|$)",
-            f"{i}={redaction}",
-            message
-        )
-    return pattern
+    """ Replacing """
+    for f in fields:
+        message = re.sub(rf"{f}=(.*?)\{separator}",
+                         f'{f}={redaction}{separator}|$', message)
+    return message
