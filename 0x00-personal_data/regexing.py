@@ -1,18 +1,16 @@
 #!/usr/bin/env python3
 """Regex-ing"""
 
-import logging
 import re
+import typing
 
 
-def filter_datum(fields: list[str], redaction: str, message: str,
+def filter_datum(fields: typing.List[str], redaction: str, message: str,
                  separator: str) -> str:
-    """Replaces values with specified fields"""
-    for i in fields:
-        print(i)
-        pattern = re.sub(
-            r"{i}=(.*?)(?={separator}|$)",
-            f"{i}={redaction}",
-            message
-        )
-    return pattern
+    """Replacing"""
+
+    for field in fields:
+        pattern = re.compile(rf"{field}=(.*?){separator}")
+        message = pattern.sub(f"{field}={redaction}{separator}", message)
+
+    return message

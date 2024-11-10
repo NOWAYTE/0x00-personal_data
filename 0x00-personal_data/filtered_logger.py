@@ -2,15 +2,13 @@
 """Regex-ing"""
 
 import re
-import typing
+from typing import List
 
 
-def filter_datum(fields: typing.List[str], redaction: str, message: str,
+def filter_datum(fields: List[str], redaction: str, message: str,
                  separator: str) -> str:
-    """Replacing"""
-
-    for field in fields:
-        pattern = re.compile(rf"{field}=(.*?){separator}")
-        message = pattern.sub(f"{field}={redaction}{separator}", message)
-
+    """ Replacing """
+    for f in fields:
+        message = re.sub(rf"{f}=(.*?)\{separator}",
+                         f'{f}={redaction}{separator}', message)
     return message
