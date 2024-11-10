@@ -5,7 +5,7 @@ import re
 import typing
 
 
-def filter_datum(fields: typing.list[str], redaction: str, message: str,
+def filter_datum(fields: typing.List[str], redaction: str, message: str,
                  separator: str) -> str:
     """Replacing"""
 
