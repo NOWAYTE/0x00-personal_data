@@ -9,7 +9,7 @@ def filter_datum(fields: List[str], redaction: str, message: str,
                  separator: str) -> str:
     """Replacing"""
     if not (
-            isinstance(fields, list) and
+            isinstance(fields, List) and
             all(isinstance(item, str) for item in fields)):
         raise TypeError("Fields must be a list of strings")
     if not isinstance(redaction, str):
