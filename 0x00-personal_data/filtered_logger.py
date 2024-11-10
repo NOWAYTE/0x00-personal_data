@@ -2,10 +2,10 @@
 """Regex-ing"""
 
 import re
-from typing import List
+import typing
 
 
-def filter_datum(fields: list[str], redaction: str, message: str,
+def filter_datum(fields: typing.list[str], redaction: str, message: str,
                  separator: str) -> str:
     """Replacing"""
 
