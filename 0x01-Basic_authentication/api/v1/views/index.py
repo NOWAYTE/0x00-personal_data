@@ -20,7 +20,7 @@ def unauthorized() -> str:
     Return:
       - Unauthorized error response
     """
-    return jsonify({"Error": "Unauthorized"}), 401
+    return jsonify({"error": "Unauthorized"}), 401
 
 
 @app_views.route('/stats/', methods=['GET'], strict_slashes=False)
