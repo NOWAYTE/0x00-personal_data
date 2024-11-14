@@ -13,9 +13,10 @@ def status() -> str:
     """
     return jsonify({"status": "OK"})
 
+
 @app_views.route('/unauthorized', methods=['GET'], strict_slashes=False)
 def unauthorized() -> str:
-    """
+    """GET /api/v1/unauthorized
     """
     return jsonify({"error": "Unauthorized"})
 
@@ -26,6 +27,7 @@ def stats() -> str:
     Return:
       - the number of each objects
     """
+
     from models.user import User
     stats = {}
     stats['users'] = User.count()
