@@ -13,22 +13,22 @@ def status() -> str:
     """
     return jsonify({"status": "OK"})
 
-
 @app_views.route('/unauthorized', methods=['GET'], strict_slashes=False)
 def unauthorized() -> str:
-    """GET /api/v1/unauthorized
+    """ GET /api/v1/unauthorized
+    Return:
+      - Unauthorized error response
     """
-    return jsonify({"error": "Unauthorized"})
+    return jsonify({"Error": "Unauthorized"}), 401
 
-
-@app_views.route('/stats/', strict_slashes=False)
+@app_views.route('/stats/', methods=['GET'], strict_slashes=False)
 def stats() -> str:
     """ GET /api/v1/stats
     Return:
       - the number of each objects
     """
-
     from models.user import User
     stats = {}
     stats['users'] = User.count()
     return jsonify(stats)
+
